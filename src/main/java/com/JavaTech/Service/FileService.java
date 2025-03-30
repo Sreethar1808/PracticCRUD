@@ -1,13 +1,14 @@
-package Service;
+package com.JavaTech.Service;
 
+import java.io.IOException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import Entity.FileData;
-import Repository.FileRepository;
+import com.JavaTech.Entity.FileData;
+import com.JavaTech.Repository.FileRepository;
 
 @Service
 public class FileService {
@@ -16,8 +17,7 @@ public class FileService {
 	private FileRepository fileRepo;
 	
 	
-	public String uploadFile(MultipartFile file)
-	{
+	public String uploadFile(MultipartFile file) throws IOException {
 		FileData savedData = fileRepo.save(FileData.builder()
 				.name(file.getOriginalFilename())
 				.fileType(file.getContentType())
@@ -28,11 +28,12 @@ public class FileService {
 		{
 			return "fileUploaded Successfully";
 		}
+		return null;
 	}
 	
 	public byte[] downloadFile(String fileName)
 	{
 		Optional<FileData> data= fileRepo.findByName(fileName);
-		return data.get().getfileData();
+		return data.get().getFileData();
 	}
 }

@@ -1,4 +1,4 @@
-package Controller;
+package com.JavaTech.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import Service.FileService;
+import com.JavaTech.Service.FileService;
 
 @RestController
 @RequestMapping("/image")
