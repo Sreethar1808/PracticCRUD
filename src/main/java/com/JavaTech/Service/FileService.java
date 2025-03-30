@@ -18,11 +18,12 @@ public class FileService {
 	
 	
 	public String uploadFile(MultipartFile file) throws IOException {
-		FileData savedData = fileRepo.save(FileData.builder()
-				.name(file.getOriginalFilename())
-				.fileType(file.getContentType())
-				.fileData(file.getBytes())
-				.build());
+
+		FileData fileData = new FileData();
+		fileData.setName(file.getOriginalFilename());
+		fileData.setFileType(file.getContentType());
+		fileData.setFileData(file.getBytes());
+		FileData savedData = fileRepo.save(fileData);
 		
 		if(savedData!=null)
 		{
